@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {    
     public Player _Player;
     public NavMeshAgent _agent;
+    public Rigidbody _rb;
     public LayerMask targetMask;
     public LayerMask groundMask;
 
@@ -20,9 +21,8 @@ public class PlayerController : MonoBehaviour
     public enum input
     {
         a,
-        z,
         e,
-        r,
+        auto,
         click
     }
 
@@ -35,9 +35,10 @@ public class PlayerController : MonoBehaviour
         playerInput = new PlayerInput();
         playerInput.Enable();
 
+        playerInput.PlayerController.Move.performed += Move;
         playerInput.PlayerController.Skill1.performed += OnUseSpell1;
         playerInput.PlayerController.Skill2.performed += OnUseSpell2;
-        playerInput.PlayerController.Skill3.performed += OnUseSpell3;
+        //playerInput.PlayerController.Skill3.performed += OnUseSpell3;
         playerInput.PlayerController.Skill4.performed += OnUseSpell4;
         playerInput.PlayerController.Skill5.performed += OnUseSpell5;
         playerInput.PlayerController.OpenPlayerPanel.started += OnTab;
@@ -62,10 +63,10 @@ public class PlayerController : MonoBehaviour
 
         RaycastTarget();
 
-        if (clickOn)
+        /*if (clickOn)
         {
             RaycastMove();
-        }
+        }*/
     }
 
     public void OnClick(InputAction.CallbackContext context)
@@ -83,6 +84,37 @@ public class PlayerController : MonoBehaviour
         if (context.canceled)
         {
             clickOn = false;
+        }
+    }
+
+    public void Move(InputAction.CallbackContext context)
+    {
+        if (context.performed) // Vérifie si une entrée est en cours
+        {
+            // Obtenir les axes d'entrée (stick gauche ou touches ZQSD/WASD)
+            Vector2 inputDirection = context.ReadValue<Vector2>();
+
+            // Convertir en direction 3D
+            Vector3 moveDirection = new Vector3(inputDirection.x, 0, inputDirection.y);
+
+            // Identifier si c'est un clavier ou une manette
+            string deviceName = context.control.device.name;
+            if (deviceName.Contains("Keyboard"))
+            {
+                Debug.Log("Contrôleur actif : Clavier");
+            }
+            else if (deviceName.Contains("Gamepad"))
+            {
+                Debug.Log("Contrôleur actif : Manette");
+            }
+
+            // Effectuer le déplacement en fonction de la direction
+            if (moveDirection.magnitude > 0.1f) // Ajouter un seuil pour éviter les mouvements parasites
+            {
+                moveDirection = moveDirection.normalized; // Normaliser pour éviter des vitesses irrégulières
+                //_agent.Move(moveDirection * _Player.GetStats(EStats.MovementSpeed) * Time.deltaTime); // Utiliser NavMeshAgent pour se déplacer
+                _Player.Move(moveDirection);
+            }
         }
     }
 
@@ -114,10 +146,10 @@ public class PlayerController : MonoBehaviour
         _Player.UseSpell(input.a);
     }
 
-    public void OnUseSpell3(InputAction.CallbackContext context)
+    /*public void OnUseSpell3(InputAction.CallbackContext context)
     {
         _Player.UseSpell(input.z);
-    }
+    }*/
 
     public void OnUseSpell4(InputAction.CallbackContext context)
     {
@@ -126,7 +158,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnUseSpell5(InputAction.CallbackContext context)
     {
-        _Player.UseSpell(input.r);
+        _Player.UseSpell(input.auto);
     }
 
     private void RaycastMove()

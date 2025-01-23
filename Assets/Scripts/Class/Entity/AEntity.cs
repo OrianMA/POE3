@@ -83,7 +83,13 @@ public class AEntity : MonoBehaviour, Ihealth
         {
             tempArgV[2] = nAgent;
         }
-        foreach(KeyValuePair<SpellLink.SpellKey,ASpell> spell in usableSpell)
+
+        if (TryGetComponent<Rigidbody>(out Rigidbody rb))
+        {
+            tempArgV[2] = rb;
+        }
+
+        foreach (KeyValuePair<SpellLink.SpellKey,ASpell> spell in usableSpell)
         {
             if (spell.Key == SpellLink.SpellKey.Move)
             {

@@ -4,18 +4,13 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-
-
-
 public class Player : AEntity
 {
     Object inventory;
-
     public List<EquipItem> equipements;
     public List<UserSpell> PlayerSpells;
     public AEntity target;
     public UIManager uiManager;
-
     public EquipItem equipement;
     [HideInInspector]public LootScript lootOnMouse;
     
@@ -23,7 +18,6 @@ public class Player : AEntity
     {
 
     }    
-
 
     public void UseSpell(PlayerController.input inputname)
     {
@@ -45,9 +39,6 @@ public class Player : AEntity
                     }
                 }
             }
-
-            
-            
         }   
     }
 
@@ -82,10 +73,5 @@ public class Player : AEntity
         equipements.Add(equipmnt);
         equipmnt.OnEquip(this);
     }
-    
-    
-
-    
-
 }
 

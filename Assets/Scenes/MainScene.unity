@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -42,8 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -96,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -183,11 +180,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1993525857512331236, guid: 605416b6abc59134eb2fef80b1eca3c3, type: 3}
   m_PrefabInstance: {fileID: 161529754}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &274577662 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 3033604128907792302, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
-  m_PrefabInstance: {fileID: 4868200038342747879}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &282581229
 GameObject:
@@ -372,6 +364,7 @@ Terrain:
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
+  m_HeightmapMinimumLODSimplification: 0
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
   m_DrawHeightmap: 1
@@ -408,6 +401,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1532386300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &761194357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6960432196269134513, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
+  m_PrefabInstance: {fileID: 4868200038342747879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1174255095
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
   m_AgentTypeID: 0
   m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
@@ -536,9 +535,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630491756}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -588,8 +586,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!4 &1630491758
 Transform:
   m_ObjectHideFlags: 0
@@ -690,7 +692,7 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3191954362177269836, guid: 39928ec570a79f34281edddf656845d1, type: 3}
-      propertyPath: spellToGetOnAwake.Array.data[1]
+      propertyPath: 'spellToGetOnAwake.Array.data[1]'
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3797348830367707870, guid: 39928ec570a79f34281edddf656845d1, type: 3}
@@ -833,6 +835,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3976789373064321954, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976789373064321954, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionId
+      value: b7c27980-4b2b-4ef0-a136-a53ee1cc979f
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976789373064321954, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionName
+      value: 'PlayerController/Rotate[/Mouse/position]'
+      objectReference: {fileID: 0}
     - target: {fileID: 5879938516279587318, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -872,7 +886,7 @@ PrefabInstance:
     - target: {fileID: 6347063413616083587, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
       propertyPath: _agent
       value: 
-      objectReference: {fileID: 274577662}
+      objectReference: {fileID: 0}
     - target: {fileID: 6347063413616083587, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
       propertyPath: PlayerSpells.Array.size
       value: 2
@@ -882,20 +896,24 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6347063413616083587, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
-      propertyPath: spellToGetOnAwake.Array.data[0]
+      propertyPath: 'spellToGetOnAwake.Array.data[0]'
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6347063413616083587, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
-      propertyPath: spellToGetOnAwake.Array.data[1]
+      propertyPath: 'spellToGetOnAwake.Array.data[1]'
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6347063413616083587, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
-      propertyPath: spellToGetOnAwake.Array.data[2]
+      propertyPath: 'spellToGetOnAwake.Array.data[2]'
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6347063413616083587, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
-      propertyPath: spellToGetOnAwake.Array.data[3]
+      propertyPath: 'spellToGetOnAwake.Array.data[3]'
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347063413616083587, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
+      propertyPath: PlayerSpells.Array.data[0].input
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6347063413616083587, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
       propertyPath: PlayerSpells.Array.data[1].Spell
@@ -993,17 +1011,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3033604128907792302, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6960432196269134513, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4868200038342747885}
   m_SourcePrefab: {fileID: 100100000, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
 --- !u!114 &4868200038342747880 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 89999436686760436, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
   m_PrefabInstance: {fileID: 4868200038342747879}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 761194357}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 912c95506cfdd704d93a47c747a080a5, type: 3}
@@ -1014,6 +1036,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7275342398934853242, guid: 736b7c46de76fbe40a4469011fe20012, type: 3}
   m_PrefabInstance: {fileID: 4868200038342747879}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &4868200038342747885
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761194357}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
